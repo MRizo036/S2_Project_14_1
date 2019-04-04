@@ -20,9 +20,12 @@
       Returns a random integer from 0 up to size-1.
 
 */
+//The line below will run the setStyles function when the page loads within the window.
 window.addEventListener("load", setStyles);
 
+//The code block below creates a functions with the name of setStyles. This functions is not passed any parameters. It sets up the style sheet for the page and the style switcher.
 function setStyles() {
+      //The 
       var styleNum = randInt(5);
       var fancySheet = document.createElement("link");
       fancySheet.setAttribute("rel", "stylesheet");
@@ -44,10 +47,31 @@ function setStyles() {
             }
             figBox.appendChild(sheetImg);
       }
+      var thumbStyles = document.createElement("style");
+      document.head.appendChild(thumbStyles);
 
-      document.head.styleSheets
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs { \
+                  position: absolute; \
+                  left: 0px; \
+                  bottom: 0px; \
+            }", 0);
 
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs img { \
+                  outline: 1px solid black; \
+                  cursor: pointer; \
+                  opacity: 0.75; \
+            }", 1);
+
+      document.styleSheets[document.styleSheets.length - 1].insertRule(
+            "figure#styleThumbs img:hover { \
+                  outline: 1px solid red; \
+                  opacity: 1.0; \
+            }", 2);
 }
+
+
 
 function randInt(size) {
       return Math.floor(size * Math.random());
